@@ -18,7 +18,7 @@ This project is a home scraper built with **Puppeteer** for scraping property li
 
    ```bash
    git clone <repository-url>
-   cd home-scraper
+   cd zillow-scraper
    ```
 
 2. Install dependencies:
