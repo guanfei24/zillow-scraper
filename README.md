@@ -12,6 +12,17 @@ This project is a home scraper built with **Puppeteer** for scraping property li
 - **TypeScript** for type safety
 - **Nodemon** for automatic server restarts during development
 
+## Project Limitations & Considerations
+- Third-party API Usage: This project does not use any third-party APIs. The Google search step has been skipped due to verification requirements. However, third-party APIs such as the official Google API or services like 2Captcha can be integrated to handle verification issues and enhance functionality.
+
+- Zillow Data Scraping: Currently, the scraping functionality can only retrieve data from the first page of the Zillow listings. Upon attempting to navigate to subsequent pages, the system is flagged as a bot by Zillow.
+
+## Potential Improvements:
+
+- Browser Parameter Reset: One approach to mitigate the bot detection issue could be resetting the browser parameters between pages to avoid detection.
+Proxy Pool Rotation: Another potential solution is implementing a proxy pool to rotate IP addresses, which can help bypass restrictions and improve scraping stability over multiple pages.
+
+
 ## Installation
 
 1. Clone the repository:
