@@ -15,6 +15,19 @@ interface HomeData {
     sqft: string | null;
 }
 
+// ** Third-party API Usage **:
+// This project does not use any third-party APIs. The Google search step has been skipped due to verification requirements.
+// However, third-party APIs such as the official Google API or services like 2Captcha can be integrated to handle verification
+// issues and enhance functionality.
+
+// ** Zillow Data Scraping Limitations **:
+// The current scraping functionality is limited to retrieving data only from the first page of Zillow listings. When attempting to
+// navigate to subsequent pages, the system is flagged as a bot by Zillow and is unable to fetch data from those pages.
+// 
+// ** Potential Solutions to Improve Scraping Stability **:
+// - Browser Parameter Reset: One approach to mitigate the bot detection issue could be resetting browser parameters between pages.
+// - Proxy Pool Rotation: Implementing a proxy pool to rotate IP addresses could help bypass restrictions and improve data scraping
+//   stability over multiple pages.
 export const scrapeZillow = async (cityName: string, headless: boolean = true): Promise<HomeData[]> => {
     const browser = await puppeteer.launch({
         headless: headless,
