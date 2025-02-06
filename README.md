@@ -43,11 +43,13 @@ The `/scrape` endpoint accepts a `POST` request with the following JSON body:
 
 ```json
 {
-  "city": "city-state"
+  "city": "city-state",
+  "headless": false
 }
 ```
 
 - **city**: Name of the city to scrape listings from (e.g., "new-york-ny").
+- **headless**: Controls Controlling headless properties of browser(default: true).
 
 #### Response
 
@@ -98,7 +100,8 @@ If there is a failure in scraping, the error message will be:
 
 ```json
 {
-  "city": "new-york-ny"
+  "city": "new-york-ny",
+  "headless": false
 }
 ```
 

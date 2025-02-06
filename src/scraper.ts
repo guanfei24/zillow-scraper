@@ -15,9 +15,9 @@ interface HomeData {
     sqft: string | null;
 }
 
-export const scrapeZillow = async (cityName: string): Promise<HomeData[]> => {
+export const scrapeZillow = async (cityName: string, headless: boolean = true): Promise<HomeData[]> => {
     const browser = await puppeteer.launch({
-        headless: false,
+        headless: headless,
         args: [
             '--no-sandbox',
             '--disable-setuid-sandbox',

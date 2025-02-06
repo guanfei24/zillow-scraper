@@ -10,20 +10,22 @@ app.use(cors());
 app.use(express.json());
 
 // Explicitly type the callback function as RequestHandler
-const scrapeHandler: RequestHandler = async (req: Request, res: Response) => {
-    const { city } = req.body;
+const scrapeHandler: RequestHandler = async (req: Request, res: Response): Promise<void> => {
+    const { city, headless = true } = req.body;  // Default headless to true if not provided
 
-    if (!city) {
-        res.status(400).json({ error: 'City is required' });
-        return; // Ensure the function exits after sending the response
+    // Validate city input
+    if (!city || typeof city !== 'string' || city.trim() === '') {
+        res.status(400).json({ error: 'City is required and must be a non-empty string' });
+        return;
     }
 
     try {
-        const listings = await scrapeZillow(city);
+        // Call the scraper with the city and headless parameter
+        const listings = await scrapeZillow(city, headless);
         res.json({ listings }); // Send the response
     } catch (error) {
         console.error(error);
-        res.status(500).json({ error: 'Failed to scrape Zillow' }); // Send the error response
+        res.status(500).json({ error: 'Failed to scrape Zillow. Please try again later.' }); // Send the error response
     }
 };
 
